@@ -126,6 +126,6 @@ Each of these folders have two other subfolders called ``TIMESERIES`` and ``CHAI
 
 ## APPENDIX
 
-We have used (and we suggest) 50 randomly initialized chains (``nchains=50``) and 10000 jumps per each chain (``njumps=10000``). For demonstration purposes, these values are set to be lower in the provided bash scripts (``nchains=5`` and ``njumps=1000``) for the code to produce results quickly. 
+We have used (and we suggest) 50 randomly initialized chains (``nchains=50``) and 10000 jumps per each chain (``njumps=10000``) to generate the results provided in the manuscript. For demonstration purposes, these values are set to be lower in the provided bash scripts (``nchains=5`` and ``njumps=1000``) for the code to produce results quickly. 
 
 Please feel free to contact me (burcutepekule@gmail.com) if you have any problems / questions regarding the code.
