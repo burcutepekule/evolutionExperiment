@@ -78,9 +78,18 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 
 ``fhn_ROBOT_ALL(t,y,opt)`` : MATLAB function that contains the ordinary differential equation (ODE) system of the dynamical model (see Supplementary Information, Eqns (1)-(5)). 
 
-``setDrugPressure(therapyIdx,offset,T)`` : MATLAB function that generates the drug pressure vector for a given treatment arm.  It takes 3 inputs, 
+``setDrugPressure(therapy,offset,T)`` : MATLAB function that generates the drug pressure vector for a given treatment arm.  It takes 3 inputs, 
 
-``therapyIdx``: Index of the treatment arm that will be used (refer to the table above).
+``therapy``: Index of the treatment arm that will be used (refer to the table above). <br/>
+``offset``: Offset value for transfer index of the time series (refer to the explanation above). <br/>
+``T`` : Total number of transfers (sets the length of the drug pressure vector). 
+
+``chains2timeSeries(njumps,nchains,commIdx,estTypeIdx)`` : MATLAB function that processes the MCMC algorithm ouputs. It takes 4 inputs, 
+
+``njumps`` : Number of jumps per Markov chain (explained above).<br/>
+``nchains``: Number of chains to be run in parallel in total (explained above). <br/>
+``commIdx``: Community index (explained above) <br/>
+``estTypeIdx`` : Index of the estimation type. ``estTypeIdx=0`` and ``estTypeIdx=1`` refer to independent and simultaneous estimations, respectively.
 
 ### Workflow
 
