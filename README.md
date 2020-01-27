@@ -66,12 +66,11 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 
 ``offset``: Offset value for transfer index of the time series. If ``offset=0``, all data points will be used for parameter estimation, including transfer 0. ``offset=1`` is used during the parameter estimations since the first data point of the time series represent the initial conditions, which is separately indicated for the differential equation solver. <br/>
 ``LB`` : Lowerbound vector of the prior distribution of the parameters, set to 0.<br/>
-``UB`` : Upperbound vector of the prior distribution of the parameters, set to 0. (See the manuscript, all parameters have a uniform prior distribution in the open interval of (0,1)).<br/>
-``x0`` : Initial guess vector for the parameters (set to ``LB+UB / 2``).
-``kernel`` : Index to choose the transition kernel for the Metropolis-Hastings algorithm. ``kernel=0`` uses a Uniform transition kernel, whereas ``kernel=1`` uses a Gaussian one. ``kernel=1`` is used in the code for the estimations. 
-
-
-
+``UB`` : Upperbound vector of the prior distribution of the parameters, set to 0 (See the manuscript, all parameters have a uniform prior distribution in the open interval of (0,1)).<br/>
+``x0`` : Initial guess vector for the parameters (set to ``(LB+UB)/2``).<br/>
+``kernel`` : Index to choose the transition kernel for the Metropolis-Hastings algorithm. ``kernel=0`` uses a Uniform transition kernel, whereas ``kernel=1`` uses a Gaussian one. ``kernel=1`` is used in the code for the estimations. <br/>
+``sig``: Standart deviation for the transition kernel (set to ``(UB-LB)/6)`` to satisfy the 3 sigma rule). <br/>
+``filname`` : Filename to save the Markov chain. <br/>
 
 ### Workflow
 
