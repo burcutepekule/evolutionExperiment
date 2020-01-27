@@ -112,7 +112,7 @@ $ ./RUN_INDEPENDENT_ESTIMATION.sh
 ```
 The bash script will read the necessary data from the subfolder called ``EXPERIMENTAL_DATA``, and will save the estimation results to the subfolder called ``SIMULATION_RESULTS``. 
 
-### Naming of the subfolders
+### File and folder naming
 
 When the bash script is complete, you will see the following folder structure created under the folder ``SIMULATION_RESULTS``, 
 
