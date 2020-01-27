@@ -116,7 +116,7 @@ The bash script will read the necessary data from the subfolder called ``EXPERIM
 
 When the bash script is complete, you will see the following folder structure created under the folder ``SIMULATION_RESULTS``, 
 
-
+![Folder Structure](https://github.com/burcutepekule/evolutionExperiment/blob/master/FOLDER_STRUCTURE.png)
 
 
 ## APPENDIX
