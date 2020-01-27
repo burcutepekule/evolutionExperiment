@@ -30,6 +30,7 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 ### Related Scripts
 
 ``RUN_INDEPENDENT_ESTIMATION.sh`` :  Bash script to run the independent parameter estimation, and generate the time series predictions using the estimated parameters.
+
 ``RUN_SIMULTANEOUS_ESTIMATION.sh`` : Bash script to run the simultaneous parameter estimation, and generate the time series predictions using the estimated parameters.
 
 ### Workflow
