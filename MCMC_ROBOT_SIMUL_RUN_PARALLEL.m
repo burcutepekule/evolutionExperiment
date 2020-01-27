@@ -7,7 +7,7 @@ UB         = [1 1 1 1 1 1 1 1 1 1 1];  %UPPERBOUNDS FOR SAMPLING nuA nuB nuAB nu
 x0         = (UB+LB)./2;
 sig        = (UB-LB)./6; % 3 sigma rule
 offset     = 1; % start from transfer 1, not 0.
-prior      = 1; % 0 -> Uniform , 1 -> Gauissian
+kernel     = 1; % 0 -> Uniform , 1 -> Gauissian
 % burnin      = floor(njumps*0.25);
 % sampleevery = 10;
 % TO SEE ALL THE VALUES IN THE CHAIN %
@@ -25,7 +25,7 @@ filname   = [foldernameData '/MCMC_SIMUL_chain_' num2str(chainIdx) '_thr'];
 for i=1:length(thrIncl)
     filname = [filname '_' num2str(thrIncl(i))];
 end
-RUN_MCMC_ALL_SIMUL_PARALLEL(readDataDirec,commIdx,thrIncl,offset,LB,UB,x0,burnin,sampleevery,njumps,prior,sig,filname);
+RUN_MCMC_ALL_SIMUL_PARALLEL(readDataDirec,commIdx,thrIncl,offset,LB,UB,x0,burnin,sampleevery,njumps,kernel,sig,filname);
 
 end
 

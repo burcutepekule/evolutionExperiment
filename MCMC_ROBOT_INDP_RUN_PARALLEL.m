@@ -7,7 +7,7 @@ UB         = [1 1 1 1 1 1 1 1 1 1 1];  %UPPERBOUNDS FOR SAMPLING nuA nuB nuAB nu
 x0         = (UB+LB)./2;
 sig        = (UB-LB)./6; % 3 sigma rule
 offset     = 1; % start from transfer 1, not 0.
-prior      = 1; % 0 -> Uniform , 1 -> Gauissian
+kernel      = 1; % 0 -> Uniform , 1 -> Gauissian
 % burnin      = floor(njumps*0.25);
 % sampleevery = 10;
 % TO SEE ALL THE VALUES IN THE CHAIN %
@@ -20,7 +20,7 @@ foldernameData = [saveDataDirec 'NJUMPS_' num2str(njumps) '_NCHAINS_' num2str(nu
 mkdir(foldernameData)
 for therapy=1:6 %1->NO TREATMENT, 2->MONO_A, 3->MONO_B, 4->COMBO, 5->CYC, 6->MIX
     filname   = [foldernameData '/MCMC_INDP_chain_' num2str(chainIdx) '_thr_' num2str(therapy)];
-    RUN_MCMC_ALL_INDP_PARALLEL(readDataDirec,commIdx,therapy,offset,LB,UB,x0,burnin,sampleevery,njumps,prior,sig,filname)
+    RUN_MCMC_ALL_INDP_PARALLEL(readDataDirec,commIdx,therapy,offset,LB,UB,x0,burnin,sampleevery,njumps,kernel,sig,filname)
 end
 
 end

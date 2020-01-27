@@ -1,6 +1,6 @@
 function chains = mh_INDP(varargin)
 
-[prior,sig,y,x0,genfunc,LB,UB,params]=parseinputargs(varargin,nargin);
+[kernel,sig,y,x0,genfunc,LB,UB,params]=parseinputargs(varargin,nargin);
 
 therapy       = params.therapy;
 diffBounds    = UB-LB;
@@ -19,9 +19,9 @@ for ch=1:params.nchains
     N  = length(y); % number of data points x dimension of data
     [N size(y) size(s)]
     loglikelihood = sumloglikelihoods(y,s);
-    priors        = unifpdf(p(varIndx_bound),LB(varIndx_bound),UB(varIndx_bound));
-    logprior      = sum(log(priors));
-    e             = loglikelihood+logprior;
+    kernels        = unifpdf(p(varIndx_bound),LB(varIndx_bound),UB(varIndx_bound));
+    logkernel      = sum(log(kernels));
+    e             = loglikelihood+logkernel;
     
     acc   = zeros(1,length(p));
     rej   = zeros(1,length(p));
@@ -40,13 +40,13 @@ for ch=1:params.nchains
             % Q(theta' | theta) = N(theta,std) (here std is zero)
             % if I want a uniform transition model -> p(k) should just be
             % sampled from a uniform distribution
-            if(prior==1)
+            if(kernel==1)
                 if(ismember(k,fixIdxs))
                     p(k) = LB(k);
                 else
                     p(k) = p(k)+sig(k)*randn*prop(k); %Gaussian
                 end
-            elseif(prior==0)
+            elseif(kernel==0)
                 if(ismember(k,fixIdxs))
                     p(k) = LB(k);
                 else
@@ -64,9 +64,9 @@ for ch=1:params.nchains
                 s             = genfunc(p); % generate the dynamical system response
                 olde          = e;
                 loglikelihood = sumloglikelihoods(y,s);
-                priors        = unifpdf(p(varIndx_bound),LB(varIndx_bound),UB(varIndx_bound));
-                logprior      = sum(log(priors));
-                e             = loglikelihood+logprior;
+                kernels        = unifpdf(p(varIndx_bound),LB(varIndx_bound),UB(varIndx_bound));
+                logkernel      = sum(log(kernels));
+                e             = loglikelihood+logkernel;
                 if(ismember(k,fixIdxs))
                     acc(k)=acc(k)+1; %accept all the samples from that distribution
                 else
@@ -91,8 +91,8 @@ for ch=1:params.nchains
     chains{ch}=samples;
 end
 
-function [prior,sig,y,x0,genfunc,LB,UB,params]=parseinputargs(varargin,nargin)
-prior=varargin{1};
+function [kernel,sig,y,x0,genfunc,LB,UB,params]=parseinputargs(varargin,nargin)
+kernel=varargin{1};
 sig=varargin{2};
 y=varargin{3};
 x0=varargin{4};
