@@ -47,7 +47,7 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 | 1 | Scenario I : inflow of both single resistances | 
 | 2 | Scenario II : inflow of both single and double resistances | 
 
-``RUN_MCMC_ALL_INDP_PARALLEL(readDataDirec,commIdx,therapy,offset,LB,UB,x0,burnin,sampleevery,njumps,kernel,sig,filname)`` : MATLAB function that sets the options for the Metropolis-Hastings algoritm to run. 
+``RUN_MCMC_ALL_INDP_PARALLEL(readDataDirec,commIdx,therapy,offset,LB,UB,x0,burnin,sampleevery,njumps,kernel,sig,filname)`` : MATLAB function that sets the options for the Metropolis-Hastings algoritm to run. It takes 13 inputs, 
 
 ``readDataDirec`` : Directory to read the experimental data from. <br/>
 ``commIdx``: Community index (explained above). <br/>
@@ -70,7 +70,17 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 ``x0`` : Initial guess vector for the parameters (set to ``(LB+UB)/2``).<br/>
 ``kernel`` : Index to choose the transition kernel for the Metropolis-Hastings algorithm. ``kernel=0`` uses a Uniform transition kernel, whereas ``kernel=1`` uses a Gaussian one. ``kernel=1`` is used in the code for the estimations. <br/>
 ``sig``: Standart deviation for the transition kernel (set to ``(UB-LB)/6)`` to satisfy the 3 sigma rule). <br/>
-``filname`` : Filename to save the Markov chain. <br/>
+``filname`` : Filename to save the Markov chain. 
+
+``mh_INDP(kernel,sig,y,x0,@(x)(fhngen_ROBOT_ALL(x,opt)),LB,UB,params)`` : MATLAB function that runs the Metropolis-Hastings algorithm. The only input that it additionally takes is the function generator ``fhngen_ROBOT_ALL``, explained below. 
+
+``fhngen_ROBOT_ALL(x,opt)`` : MATLAB function that sets the options for the dynamical system to run, which is contained in hte function  ``fhn_ROBOT_ALL(t,x,opt)``, explained below.
+
+``fhn_ROBOT_ALL(t,y,opt)`` : MATLAB function that contains the ordinary differential equation (ODE) system of the dynamical model (see Supplementary Information, Eqns (1)-(5)). 
+
+``setDrugPressure(therapyIdx,offset,T)`` : MATLAB function that generates the drug pressure vector for a given treatment arm.  It takes 3 inputs, 
+
+``therapyIdx``: Index of the treatment arm that will be used (refer to the table above).
 
 ### Workflow
 
