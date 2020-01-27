@@ -114,6 +114,10 @@ The bash script will read the necessary data from the subfolder called ``EXPERIM
 
 ### Naming of the subfolders
 
+When the bash script is complete, you will see the following folder structure created under the folder ``SIMULATION_RESULTS``, 
+
+
+
 
 ## APPENDIX
 
