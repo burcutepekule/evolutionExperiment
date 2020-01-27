@@ -1,12 +1,12 @@
-function [drugPressure_A,drugPressure_B,drugPressure_AB] = setDrugPressure(therapyIdx,offset,T)
+function [drugPressure_A,drugPressure_B,drugPressure_AB] = setDrugPressure(therapy,offset,T)
 drugPressure_A=[];
 drugPressure_B=[];
 drugPressure_AB=[];
-if(therapyIdx==1) %NO TREATMENT
+if(therapy==1) %NO TREATMENT
     drugPressure_A  = zeros(T,1);
     drugPressure_B  = zeros(T,1);
     drugPressure_AB = zeros(T,1);
-elseif(therapyIdx==2) %MONO_A
+elseif(therapy==2) %MONO_A
     if (offset==1)
         drugPressure_A  = [0;ones(T-1,1)];
         drugPressure_B  = zeros(T,1);
@@ -16,7 +16,7 @@ elseif(therapyIdx==2) %MONO_A
         drugPressure_B  = zeros(T,1);
         drugPressure_AB = zeros(T,1);
     end
-elseif(therapyIdx==3)%MONO_B
+elseif(therapy==3)%MONO_B
     if (offset==1)
         drugPressure_A  = zeros(T,1);
         drugPressure_B  = [0;ones(T-1,1)];
@@ -26,7 +26,7 @@ elseif(therapyIdx==3)%MONO_B
         drugPressure_B  = ones(T,1);
         drugPressure_AB = zeros(T,1);
     end
-elseif(therapyIdx==4)%COMBO
+elseif(therapy==4)%COMBO
     if (offset==1)
         drugPressure_A  = zeros(T,1);
         drugPressure_B  = zeros(T,1);
@@ -36,7 +36,7 @@ elseif(therapyIdx==4)%COMBO
         drugPressure_B  = zeros(T,1);
         drugPressure_AB = ones(T,1);
     end
-elseif(therapyIdx==5) %CYC
+elseif(therapy==5) %CYC
     colA = [1;1;0;0]; colB = [0;0;1;1];
     if (offset==1)
         remDiv = rem((T-1),4);
@@ -51,7 +51,7 @@ elseif(therapyIdx==5) %CYC
         drugPressure_B  = [repmat(colB,repDiv,1);colB(1:remDiv)];
         drugPressure_AB = zeros(T,1);
     end
-elseif(therapyIdx==6) %MIX
+elseif(therapy==6) %MIX
     if (offset==1)
         drugPressure_A  = [0;0.5*ones(T-1,1)];
         drugPressure_B  = [0;0.5*ones(T-1,1)];
