@@ -36,7 +36,7 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 ### Workflow
 
 1) Open the Terminal
-2) Go to the directory you have cloned the repository. Considering the example above, go to the ``ROBOT`` folder,
+2) Go to the directory you have cloned the repository. Considering the example above, go to the ``ROBOT/evolutionExperiment`` folder,
 
 ```sh 
 $ cd ./ROBOT/evolutionExperiment/
