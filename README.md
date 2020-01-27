@@ -47,7 +47,7 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 | 1 | Scenario I : inflow of both single resistances | 
 | 2 | Scenario II : inflow of both single and double resistances | 
 
-``RUN_MCMC_ALL_INDP_PARALLEL(readDataDirec,commIdx,therapy,offset,LB,UB,x0,burnin,sampleevery,njumps,prior,sig,filname)`` : MATLAB function that sets the options for the Metropolis-Hastings algoritm to run. 
+``RUN_MCMC_ALL_INDP_PARALLEL(readDataDirec,commIdx,therapy,offset,LB,UB,x0,burnin,sampleevery,njumps,kernel,sig,filname)`` : MATLAB function that sets the options for the Metropolis-Hastings algoritm to run. 
 
 ``readDataDirec`` : Directory to read the experimental data from. <br/>
 ``commIdx``: Community index (explained above). <br/>
@@ -64,8 +64,13 @@ You will have a folder named ``evolutionExperiment`` in your new ``ROBOT`` folde
 | 6 | mixing | 
 
 
-``chainIdx``: Index of the chain that is currently being run. (This is required for the proper naming of the files, and to change the seed for the random number generator.)<br/>
-``commIdx``: This is the "community index". As mentioned in the manuscript, there are 3 different experimental scenarios with different community composition. To run the code for each scenario, manipulate the ``commIdx`` variable as described below. 
+``offset``: Offset value for transfer index of the time series. If ``offset=0``, all data points will be used for parameter estimation, including transfer 0. ``offset=1`` is used during the parameter estimations since the first data point of the time series represent the initial conditions, which is separately indicated for the differential equation solver. <br/>
+``LB`` : Lowerbound vector of the prior distribution of the parameters, set to 0.<br/>
+``UB`` : Upperbound vector of the prior distribution of the parameters, set to 0. (See the manuscript, all parameters have a uniform prior distribution in the open interval of (0,1)).<br/>
+``x0`` : Initial guess vector for the parameters (set to ``LB+UB / 2``).
+``kernel`` : Index to choose the transition kernel for the Metropolis-Hastings algorithm. ``kernel=0`` uses a Uniform transition kernel, whereas ``kernel=1`` uses a Gaussian one. ``kernel=1`` is used in the code for the estimations. 
+
+
 
 
 ### Workflow
