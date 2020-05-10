@@ -1,5 +1,5 @@
 # Parameter estimation for the long-term serial passage evolution experiment
-Parameter estimation repository for the manuscript _"Testing strategies to reduce antibiotic resistance by liquid handling robotics"_  by Daniel C. Angst, Burcu Tepekule, Balazs Bogos, Lei Sun, Sebastian Bonhoeffer.
+Parameter estimation repository for the manuscript _"Comparing treatment strategies to reduce antibiotic resistance in an in vitro epidemiological setting"_  by Daniel C. Angst, Burcu Tepekule, Balazs Bogos, Lei Sun, Sebastian Bonhoeffer.
 
 # Getting started
 
